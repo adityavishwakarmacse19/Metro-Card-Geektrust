@@ -25,14 +25,11 @@ public class MetroServiceImpl implements MetroService{
             int cost = 0;
             int discount = 0;
 
-            if(passenger.equalsIgnoreCase("adult")){
-                cost = 200;
-            } else if(passenger.equalsIgnoreCase("senior_citizen")){
-                cost = 100;
-            } else cost = 50; 
+            //calculate cost
+            cost = calculateCost(passenger);
 
+            //calculating discount
             String previousfromStation = metroCard.getFromStation();
-
             //done right
             if(previousfromStation!=null && previousfromStation != fromStation){
                 boolean returnJourney = metroCard.getReturnJourney();
@@ -41,11 +38,11 @@ public class MetroServiceImpl implements MetroService{
                 if(returnJourney){
                     cost /= 2;
                     discount = cost;
-                    
                 }
             }
             metroCard.setDiscount(discount);
 
+            //CalculatingCostSurchargeAndBalance
             int balance = metroCard.getBalance();
             if(cost > metroCard.getBalance()){
                 int sufficientAmtToLoad = cost - metroCard.getBalance();
@@ -58,9 +55,10 @@ public class MetroServiceImpl implements MetroService{
             metroCard.setBalance(balance);
 
             //checkin done
+
+            //set given values
             Passenger enumPassenger = stringToEnumPassenger(passenger);
             metroCard.setPassenger(enumPassenger);
-
             //done right
             metroCard.setFromStation(fromStation);
 
@@ -74,6 +72,7 @@ public class MetroServiceImpl implements MetroService{
     public StationService getStationService(){
         return stationService;
     }
+
     Passenger stringToEnumPassenger(String passenger){
         Passenger enumPassenger;
         if(passenger.equalsIgnoreCase("ADULT")){
@@ -84,5 +83,15 @@ public class MetroServiceImpl implements MetroService{
             enumPassenger = Passenger.KID;
         }
         return enumPassenger;
+    }
+
+    private int calculateCost(String passenger){
+        int cost;
+        if(passenger.equalsIgnoreCase("adult")){
+            cost = 200;
+        } else if(passenger.equalsIgnoreCase("senior_citizen")){
+            cost = 100;
+        } else cost = 50;
+        return cost;
     }
 }
