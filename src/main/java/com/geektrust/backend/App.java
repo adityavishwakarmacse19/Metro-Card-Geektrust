@@ -26,26 +26,26 @@ public class App {
                String[] input = sc.nextLine().split(" ", 2);
                switch (input[0]) {
                 case "BALANCE":
-                    String[] cardProperties = input[1].split(" ", 2);
-//                  metro number - cardProperties[0]
-//                  balance - Integer.parseInt(cardProperties[1])
-                    metroService.balance(cardProperties[0], Integer.parseInt(cardProperties[1]));
+                    String[] cardParameters = input[1].split(" ", 2);
+                    //metroNumber - cardParameters[0]
+                    //balance - Integer.parseInt(cardParameters[1])
+                    metroService.balance(cardParameters[0], Integer.parseInt(cardParameters[1]));
                     break;
 
                 case "CHECK_IN":
-                    String[] checkInDetails = input[1].split(" ", 3);
-//                  metro number - checkInDetails[0]
-//                  passenger type - checkInDetails[1]
-//                  from station - checkInDetails[2]
-                    metroService.checkIn(checkInDetails[0], checkInDetails[1], checkInDetails[2]);
+                    String[] checkInParameters = input[1].split(" ", 3);
+                    //metroNumber - checkInParameters[0]
+                    //passenger - checkInParameters[1] //type of passenger
+                    //fromstation - checkInParameters[2]
+                    metroService.checkIn(checkInParameters[0], checkInParameters[1], checkInParameters[2]);
                     break;
                 
                 case "PRINT_SUMMARY":
-//                  print summary
-
+                    //print summary
                     StationService stationService = metroService.getStationService();
                     stationService.print_summary();
                     break;
+                    
                 default:
                     break;
                }
