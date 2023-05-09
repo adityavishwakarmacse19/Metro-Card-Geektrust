@@ -1,4 +1,4 @@
-package com.geektrust.backend.Repositories;
+package com.geektrust.backend.DTO;
 
 public class EnumPassenger {
     public enum Passenger{

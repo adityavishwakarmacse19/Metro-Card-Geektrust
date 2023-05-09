@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import com.geektrust.backend.Entities.MetroCard;
-import com.geektrust.backend.Repositories.EnumPassenger.Passenger;
-import com.geektrust.backend.Repositories.StationDTO;
+import com.geektrust.backend.DTO.EnumPassenger.Passenger;
+import com.geektrust.backend.DTO.StationDTO;
 import com.geektrust.backend.Repositories.StationRepository;
 import com.geektrust.backend.Repositories.StationRepositoryImpl;
 

@@ -1,6 +1,6 @@
 package com.geektrust.backend.Entities;
 
-import com.geektrust.backend.Repositories.EnumPassenger.Passenger;
+import com.geektrust.backend.DTO.EnumPassenger.Passenger;
 
 public class MetroCard {
     String metroNumber;

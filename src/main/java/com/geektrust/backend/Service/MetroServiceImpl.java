@@ -3,7 +3,7 @@ package com.geektrust.backend.Service;
 import com.geektrust.backend.Entities.MetroCard;
 import com.geektrust.backend.Repositories.MetroCardRepository;
 import com.geektrust.backend.Repositories.MetroCardRepositoryImpl;
-import com.geektrust.backend.Repositories.EnumPassenger.Passenger;
+import com.geektrust.backend.DTO.EnumPassenger.Passenger;
 
 public class MetroServiceImpl implements MetroService{
     MetroCardRepository metroCardRepository = new MetroCardRepositoryImpl();

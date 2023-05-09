@@ -1,7 +1,7 @@
-package com.geektrust.backend.Repositories;
+package com.geektrust.backend.DTO;
 
 import java.util.Map;
-import com.geektrust.backend.Repositories.EnumPassenger.Passenger;
+import com.geektrust.backend.DTO.EnumPassenger.Passenger;
 
 public class StationDTO {
     String station;

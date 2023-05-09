@@ -3,6 +3,8 @@ package com.geektrust.backend.Repositories;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.geektrust.backend.DTO.StationDTO;
+
 
 public class StationRepositoryImpl implements StationRepository{
     Map<String, StationDTO> map = new HashMap<>();
