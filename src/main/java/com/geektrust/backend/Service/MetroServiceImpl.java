@@ -3,6 +3,7 @@ package com.geektrust.backend.Service;
 import com.geektrust.backend.Entities.MetroCard;
 import com.geektrust.backend.Repositories.MetroCardRepository;
 import com.geektrust.backend.Repositories.MetroCardRepositoryImpl;
+import com.geektrust.backend.Constants.Common;
 import com.geektrust.backend.DTO.EnumPassenger.Passenger;
 
 public class MetroServiceImpl implements MetroService{
@@ -22,8 +23,8 @@ public class MetroServiceImpl implements MetroService{
 
             MetroCard metroCard = metroCardRepository.getByMetroNumber(metroNumber);
 
-            int cost = 0;
-            int discount = 0;
+            int cost = Common.ZERO;
+            int discount = Common.ZERO;
 
             //calculate cost
             cost = calculateCost(passenger);
@@ -36,7 +37,7 @@ public class MetroServiceImpl implements MetroService{
                 returnJourney = !returnJourney;
                 metroCard.setReturnJourney(returnJourney);
                 if(returnJourney){
-                    cost /= 2;
+                    cost /= Common.TWO;
                     discount = cost;
                 }
             }
@@ -46,8 +47,8 @@ public class MetroServiceImpl implements MetroService{
             int balance = metroCard.getBalance();
             if(cost > metroCard.getBalance()){
                 int sufficientAmtToLoad = cost - metroCard.getBalance();
-                cost += sufficientAmtToLoad * 2 / 100;
-                balance = 0;
+                cost += sufficientAmtToLoad * Common.TWO/ 100;
+                balance = Common.ZERO;
             } else {
                 balance = metroCard.getBalance() - cost;
             }

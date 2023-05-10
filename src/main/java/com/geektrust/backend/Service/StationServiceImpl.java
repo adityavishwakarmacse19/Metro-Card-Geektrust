@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import com.geektrust.backend.Entities.MetroCard;
 import com.geektrust.backend.DTO.EnumPassenger.Passenger;
+import com.geektrust.backend.Constants.Common;
 import com.geektrust.backend.DTO.StationDTO;
 import com.geektrust.backend.Repositories.StationRepository;
 import com.geektrust.backend.Repositories.StationRepositoryImpl;
@@ -35,9 +36,9 @@ public class StationServiceImpl implements StationService{
             stationDTO.setTotalDiscount(totalDiscount);
 
             Map<Passenger, Integer> passengerMap = stationDTO.getPassengerMap();
-            int passengerCount = 1;
+            int passengerCount = Common.ONE;
             if(passengerMap.containsKey(passenger)){
-                passengerCount = passengerMap.get(passenger) + 1;
+                passengerCount = passengerMap.get(passenger) + Common.ONE;
             }
 
             passengerMap.put(passenger, passengerCount);
@@ -45,7 +46,7 @@ public class StationServiceImpl implements StationService{
 
         } else{
             Map<Passenger, Integer> passengerMap = new HashMap<>();
-            passengerMap.put(passenger, 1);
+            passengerMap.put(passenger, Common.ONE);
             stationDTO = new StationDTO(station, cost, discount, passengerMap);
         }
 
