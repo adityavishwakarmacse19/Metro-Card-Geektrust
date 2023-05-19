@@ -110,7 +110,7 @@ public class MetroServiceImpl implements MetroService{
                 int totalCharges = station.getTotalCharges();
                 int totalDiscount = station.getTotalDiscount();
     
-                System.out.println("TOTAL_COLLECTION " + station + " " + totalCharges + " " + totalDiscount);
+                System.out.println("TOTAL_COLLECTION " + station.getStationName() + " " + totalCharges + " " + totalDiscount);
                 System.out.println("PASSENGER_TYPE_SUMMARY");
     
                 Map<Passenger, Integer> passengerMap = station.getPassengerMap();
