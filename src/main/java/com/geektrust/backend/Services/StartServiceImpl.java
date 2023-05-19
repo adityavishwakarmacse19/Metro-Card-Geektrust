@@ -1,10 +1,10 @@
-package com.geektrust.backend.Service;
+package com.geektrust.backend.Services;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 
-import com.geektrust.backend.Constants.Common;
+import com.geektrust.backend.constants.Common;
 
 public class StartServiceImpl implements StartService{
 
@@ -40,8 +40,7 @@ public class StartServiceImpl implements StartService{
                 
                 case "PRINT_SUMMARY":
                     //print summary
-                    StationService stationService = metroService.getStationService();
-                    stationService.print_summary();
+                    metroService.print_summary();
                     break;
                     
                 default:

@@ -1,4 +1,4 @@
-package com.geektrust.backend.Constants;
+package com.geektrust.backend.constants;
 
 public class Common {
     public static final String SPACE = " ";

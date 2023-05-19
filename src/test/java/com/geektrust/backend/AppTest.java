@@ -1,5 +1,7 @@
 package com.geektrust.backend;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,6 +15,11 @@ class AppTest {
         // Act   
         // Assert
         Assertions.assertTrue(true);
+    }
+
+    @Test
+    void demoTestMethod() {
+        assertTrue(false);
     }
 
 }
