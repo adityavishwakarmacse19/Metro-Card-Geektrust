@@ -3,6 +3,7 @@ package com.geektrust.backend.services;
 import com.geektrust.backend.constants.Common;
 import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
+import com.geektrust.backend.dto.Amounts;
 import com.geektrust.backend.dto.StationCollection;
 import com.geektrust.backend.models.CheckIn;
 import com.geektrust.backend.models.MetroCard;
@@ -48,8 +49,8 @@ public class CheckInServiceImpl implements CheckInService{
             cost += remaingCost * Common.SURCHARGE;
 
             //save the current checkIn
-            checkIn.getAmounts().setCost(cost);
-            checkIn.getAmounts().setDiscount(discount);
+            Amounts amounts = new Amounts(cost, discount);
+            checkIn.setAmounts(amounts);
             checkInRepository.save(checkIn);
 
             //add the current collection to  stationRepository
