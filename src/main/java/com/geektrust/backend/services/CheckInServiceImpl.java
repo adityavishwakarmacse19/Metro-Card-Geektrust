@@ -43,17 +43,24 @@ public class CheckInServiceImpl implements CheckInService{
             }
 
             //calculate cost
-            int cost = passenger.getCost() - discount;
+            int cost = passenger.getFair() - discount;
             int remaingCost = metroCardService.useCard(cardNumber, cost);
             cost += remaingCost * Common.SURCHARGE;
 
             //save the current checkIn
+            checkIn.getAmounts().setCost(cost);
+            checkIn.getAmounts().setDiscount(discount);
             checkInRepository.save(checkIn);
 
             //add the current collection to  stationRepository
             StationCollection stationCollection = new StationCollection(fromStation, discount, cost, passenger);
             stationRepository.addCollection(stationCollection);
         }
+    }
+
+    @Override
+    public boolean isCheckedIn(String cardNumber){
+        return checkInRepository.getByCardNumber(cardNumber) != null;
     }
 
     @Override

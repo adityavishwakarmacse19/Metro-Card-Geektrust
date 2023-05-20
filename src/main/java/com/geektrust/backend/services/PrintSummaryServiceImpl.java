@@ -25,14 +25,15 @@ public class PrintSummaryServiceImpl implements PrintSummaryService{
         StationName[] stationNames = StationName.values();
         for(StationName stationName : stationNames){
             Station station = checkInService.getStationByStationName(stationName);
-    
-            Map<Passenger, Integer> passengerMap = station.getPassengerMap();
-            //method to sort values  
-            HashMap<Passenger, Integer> passengerMapSorted = sortValues(passengerMap); 
-            //put the sorted passengerMap in station.getPassengerMap()
-            station.setPassengerMap(passengerMapSorted);
-            
-            station.printStation();
+            if(station != null){
+                Map<Passenger, Integer> passengerMap = station.getPassengerMap();
+                //method to sort values  
+                HashMap<Passenger, Integer> passengerMapSorted = sortValues(passengerMap); 
+                //put the sorted passengerMap in station.getPassengerMap()
+                station.setPassengerMap(passengerMapSorted);
+                
+                station.printStation();
+            }
         }  
     }
 

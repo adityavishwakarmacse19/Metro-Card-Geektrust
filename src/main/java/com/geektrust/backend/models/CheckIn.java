@@ -3,18 +3,21 @@ package com.geektrust.backend.models;
 import com.geektrust.backend.constants.Common;
 import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
+import com.geektrust.backend.dto.Amounts;
 
 public class CheckIn {
     private String cardNumber;
     private Passenger passenger;
     private StationName fromStation;
-    private boolean returnJourney; 
+    private boolean returnJourney;
+    private Amounts amounts;
 
     public CheckIn(String cardNumber, Passenger passenger, StationName fromStation) {
         this.cardNumber = cardNumber;
         this.passenger = passenger;
         this.fromStation = fromStation;
         this.returnJourney = false;
+        this.amounts = new Amounts(0, 0);
     }
 
     public int calcuLateDiscount(StationName previousFromStation, boolean previousReturnjourney){
@@ -27,7 +30,7 @@ public class CheckIn {
             this.returnJourney = returnJourney;
 
             if(returnJourney){
-                discount = passenger.getCost()/Common.TWO;
+                discount = passenger.getFair()/Common.TWO;
             }
         } else {
             // checkin is not return journey
@@ -37,6 +40,15 @@ public class CheckIn {
         }
         return discount;
     }
+
+    public Amounts getAmounts() {
+        return amounts;
+    }
+
+    public void setAmounts(Amounts amounts) {
+        this.amounts = amounts;
+    }
+
     
     public String getCardNumber() {
         return cardNumber;

@@ -4,10 +4,10 @@ import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
 
 public class StationCollection {
-    StationName stationName;
-	int discount;
-	int cost;
-    Passenger passenger;
+    private StationName stationName;
+	private int discount;
+	private int cost;
+	private Passenger passenger;
 
 
     public StationCollection(StationName stationName, int discount, int cost, Passenger passenger) {

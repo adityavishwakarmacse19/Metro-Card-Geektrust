@@ -7,4 +7,5 @@ import com.geektrust.backend.models.Station;
 public interface CheckInService {
     void checkInPassenger(CheckIn checkIn);
     Station getStationByStationName(StationName stationName);
+    boolean isCheckedIn(String cardNumber);
 }

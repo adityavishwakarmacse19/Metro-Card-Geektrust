@@ -3,13 +3,13 @@ package com.geektrust.backend.constants;
 public enum Passenger{
     ADULT(200), KID(50), SENIOR_CITIZEN(100);
 
-    private int cost;
+    private int fair;
 
-    public int getCost(){
-        return this.cost;
+    public int getFair(){
+        return this.fair;
     }
 
-    private Passenger(int cost){
-        this.cost = cost;
+    private Passenger(int fair){
+        this.fair = fair;
     }
 }

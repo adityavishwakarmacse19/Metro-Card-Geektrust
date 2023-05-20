@@ -29,7 +29,7 @@ public class MetroCardServiceImpl implements CardService{
             balance = card.getBalance() - cost;
             card.setBalance(balance);
             cardRepository.save(card);
-            return Common.ZERO;
+            return 0;
         }
     }
 
