@@ -5,9 +5,10 @@ import com.geektrust.backend.constants.StationName;
 
 public class StationCollection {
     StationName stationName;
-    Passenger passenger;
-    int discount;
+	int discount;
 	int cost;
+    Passenger passenger;
+
 
     public StationCollection(StationName stationName, int discount, int cost, Passenger passenger) {
 		this.stationName = stationName;

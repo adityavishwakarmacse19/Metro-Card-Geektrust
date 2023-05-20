@@ -11,6 +11,7 @@ public class Station {
     int totalDiscount;
     int totalCharges;
     Map<Passenger, Integer> passengerMap;
+	
 
 	public Station(StationName stationName, int totalDiscount, int totalCharges, Map<Passenger, Integer> passengerMap) {
         this.stationName = stationName;

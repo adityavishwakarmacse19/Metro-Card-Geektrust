@@ -7,6 +7,7 @@ public class CheckIn {
     String cardNumber;
     Passenger passenger;
     StationName fromStation;
+    boolean returnJourney; 
 
     public CheckIn(String cardNumber, Passenger passenger, StationName fromStation) {
         this.cardNumber = cardNumber;

@@ -20,70 +20,36 @@ import com.geektrust.backend.repositories.CardRepositoryImpl;
 import com.geektrust.backend.repositoryServices.StationRepositoryService;
 import com.geektrust.backend.repositoryServices.StationRepositoryServiceImpl;
 
-public class MetroServiceImpl implements MetroService{
-
+public class MetroCardServiceImpl implements CardService{
 
     CardRepository cardRepository = new CardRepositoryImpl();
     StationRepositoryService stationRepositoryService = new StationRepositoryServiceImpl();
 
     @Override
-    public void balance(String cardNumber, int balance){
+    public void balance(String cardNumber, int balance) {
         MetroCard card = new MetroCard(cardNumber, balance);
         cardRepository.save(card);
-    }  
+    }
 
     @Override
-    public void checkIn(String cardNumber, String passenger, String fromStation){
-
-        if(cardRepository.containsCardNumber(cardNumber)){
-
-            MetroCard card = cardRepository.getByCardNumber(cardNumber);
-            //calculate cost
-            int cost = Passenger.valueOf(passenger).getCost();
-
-            StationName previousFromStation = card.getFromStation();
-            
-
-            boolean returnJourney = card.getReturnJourney();
-
-            //calculating discount
-            int discount = 0;
-
-            //whether retrun journey or not
-            StationName currentFromStation = StationName.valueOf(fromStation);
-            if(previousFromStation!=null && previousFromStation != currentFromStation){
-                //setting current returnJourney
-                returnJourney = !returnJourney;
-                card.setReturnJourney(returnJourney);
-                if(returnJourney){
-                    cost /= Common.TWO;
-                    discount = cost;
-                }
-            } 
-    
-            //CalculatingCostSurchargeAndBalance
-            int balance = card.getBalance();
-            if(cost > card.getBalance()){
-                int sufficientAmtToLoad = cost - card.getBalance();
-                cost += sufficientAmtToLoad * Common.TWO/ 100;
-                balance = Common.ZERO;
-            } else {
-                balance = card.getBalance() - cost;
-            }
+    public int useCard(String cardNumber, int cost) {
+        MetroCard card = cardRepository.getByCardNumber(cardNumber);
+        int balance = card.getBalance();
+        if(cost > card.getBalance()){
+            int sufficientAmtToLoad = cost - card.getBalance();
+            cost += sufficientAmtToLoad * Common.TWO/ 100;
+            balance = Common.ZERO;
             card.setBalance(balance);
-
-            //checkin done
-
-            //set given values
-            card.setFromStation(currentFromStation);
-
             cardRepository.save(card);
-
-            StationCollection stationCollection = new StationCollection(currentFromStation, discount, cost, Passenger.valueOf(passenger));
-            stationRepositoryService.addCollection(stationCollection);
+            return sufficientAmtToLoad;
+        } else {
+            balance = card.getBalance() - cost;
+            card.setBalance(balance);
+            cardRepository.save(card);
+            return 0;
         }
-
     }
+
 
     @Override
     public void print_summary(){        
@@ -128,5 +94,7 @@ public class MetroServiceImpl implements MetroService{
         }   
         return sortedHashMap;  
     }
+
+
 
 }

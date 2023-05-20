@@ -6,13 +6,13 @@ import java.util.Scanner;
 
 import com.geektrust.backend.constants.Common;
 import com.geektrust.backend.services.MetroService;
-import com.geektrust.backend.services.MetroServiceImpl;
+import com.geektrust.backend.services.MetroCardServiceImpl;
 
 public class StartServiceImpl implements StartService{
 
     @Override
     public void start(String[] args) throws IOException {
-        MetroService metroService = new MetroServiceImpl();
+        MetroService metroService = new MetroCardServiceImpl();
 
         // Sample code to read from file passed as command line argument
         try {
