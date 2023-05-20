@@ -1,7 +1,5 @@
 package com.geektrust.backend.models;
 
-import com.geektrust.backend.constants.StationName;
-
 public class MetroCard {
     private String cardNumber;
     private int balance;

@@ -49,16 +49,16 @@ public class Station {
 		return totalDiscount;
 	}
 
-	public void setTotalDiscount(int totalDiscount) {
-		this.totalDiscount = totalDiscount;
-	}
+	// public void setTotalDiscount(int totalDiscount) {
+	// 	this.totalDiscount = totalDiscount;
+	// }
 	
 	public int getTotalCharges() {
 		return totalCharges;
 	}
 
-	public void setTotalCharges(int totalCharges) {
-		this.totalCharges = totalCharges;
-	}
+	// public void setTotalCharges(int totalCharges) {
+	// 	this.totalCharges = totalCharges;
+	// }
 
 }
