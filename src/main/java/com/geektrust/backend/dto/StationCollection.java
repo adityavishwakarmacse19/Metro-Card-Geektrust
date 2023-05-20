@@ -1,7 +1,7 @@
 package com.geektrust.backend.dto;
 
-import com.geektrust.backend.Services.MetroServiceImpl.Passenger;
 import com.geektrust.backend.models.Station.StationName;
+import com.geektrust.backend.services.MetroServiceImpl.Passenger;
 
 public class StationCollection {
     StationName stationName;

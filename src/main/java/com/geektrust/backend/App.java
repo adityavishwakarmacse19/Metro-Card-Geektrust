@@ -2,8 +2,8 @@ package com.geektrust.backend;
 
 import java.io.IOException;
 
-import com.geektrust.backend.Services.StartService;
-import com.geektrust.backend.Services.StartServiceImpl;
+import com.geektrust.backend.services.StartService;
+import com.geektrust.backend.services.StartServiceImpl;
 
 public class App {
 

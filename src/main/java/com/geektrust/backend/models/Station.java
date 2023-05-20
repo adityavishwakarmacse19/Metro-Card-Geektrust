@@ -1,8 +1,9 @@
 package com.geektrust.backend.models;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
-import com.geektrust.backend.Services.MetroServiceImpl.Passenger;
+import com.geektrust.backend.services.MetroServiceImpl.Passenger;
 
 public class Station {
     StationName stationName;   
@@ -16,6 +17,19 @@ public class Station {
         this.totalCharges = totalCharges;
         this.passengerMap = passengerMap;
     }
+
+	public void printStation(){
+		String stationName = this.getStationName().name();
+		int totalCharges = this.getTotalCharges();
+		int totalDiscount = this.getTotalDiscount();
+		Map<Passenger, Integer> passengerMap = this.getPassengerMap();
+		
+		System.out.println("TOTAL_COLLECTION " + stationName + " " + totalCharges + " " + totalDiscount);
+		System.out.println("PASSENGER_TYPE_SUMMARY");
+		for(Entry<Passenger, Integer> entry : passengerMap.entrySet()){
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		}
+	}
 
     public Map<Passenger, Integer> getPassengerMap() {
 		return passengerMap;

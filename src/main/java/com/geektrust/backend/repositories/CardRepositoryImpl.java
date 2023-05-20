@@ -1,4 +1,4 @@
-package com.geektrust.backend.Repositories;
+package com.geektrust.backend.repositories;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,13 +9,13 @@ public class CardRepositoryImpl implements CardRepository{
     Map<String, Card> CardMap = new HashMap<>();
 
     @Override
-    public Card save(Card Card) {
-        return CardMap.put(Card.getCardNumber(),Card);
+    public void save(Card card) {
+        CardMap.put(card.getCardNumber(),card);
     }
 
     @Override
-    public void delete(Card metroCard) {
-        CardMap.remove(metroCard.getCardNumber());
+    public void delete(Card card) {
+        CardMap.remove(card.getCardNumber());
     }
 
     @Override

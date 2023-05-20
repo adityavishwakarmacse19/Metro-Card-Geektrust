@@ -1,4 +1,4 @@
-package com.geektrust.backend.Services;
+package com.geektrust.backend.services;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -9,15 +9,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.geektrust.backend.Repositories.CardRepository;
-import com.geektrust.backend.Repositories.CardRepositoryImpl;
-import com.geektrust.backend.Repositories.CollectionRepository;
-import com.geektrust.backend.Repositories.CollectionRepositoryImpl;
 import com.geektrust.backend.constants.Common;
 import com.geektrust.backend.dto.StationCollection;
 import com.geektrust.backend.models.Card;
 import com.geektrust.backend.models.Station;
 import com.geektrust.backend.models.Station.StationName;
+import com.geektrust.backend.repositories.CardRepository;
+import com.geektrust.backend.repositories.CardRepositoryImpl;
+import com.geektrust.backend.repositories.StationRepository;
+import com.geektrust.backend.repositories.StationRepositoryImpl;
+import com.geektrust.backend.repositoryServices.StationRepositoryService;
+import com.geektrust.backend.repositoryServices.StationRepositoryServiceImpl;
 
 public class MetroServiceImpl implements MetroService{
     public enum Passenger{
@@ -35,7 +37,7 @@ public class MetroServiceImpl implements MetroService{
     }
 
     CardRepository cardRepository = new CardRepositoryImpl();
-    CollectionRepository collectionRepository = new CollectionRepositoryImpl();
+    StationRepositoryService stationRepositoryService = new StationRepositoryServiceImpl();
 
     @Override
     public void balance(String cardNumber, int balance){
@@ -91,74 +93,53 @@ public class MetroServiceImpl implements MetroService{
             cardRepository.save(card);
 
             StationCollection stationCollection = new StationCollection(currentFromStation, discount, cost, Passenger.valueOf(passenger));
-            collectionRepository.addCollection(stationCollection);
-
+            stationRepositoryService.addCollection(stationCollection);
         }
 
     }
 
     @Override
-    public void print_summary(){
-
-        
+    public void print_summary(){        
         StationName[] stationNames = StationName.values();
-    
         for(StationName stationName : stationNames){
-                // StationDTO stationDTO = stationRepository.getByStation(station);
-                Station station = collectionRepository.getByStationName(stationName);
+            Station station = stationRepositoryService.getByStationName(stationName);
     
-                int totalCharges = station.getTotalCharges();
-                int totalDiscount = station.getTotalDiscount();
+            Map<Passenger, Integer> passengerMap = station.getPassengerMap();
+            //method to sort values  
+            HashMap<Passenger, Integer> passengerMapSorted = sortValues(passengerMap); 
+            //put the sorted passengerMap in station.getPassengerMap()
+            station.setPassengerMap(passengerMapSorted);
+            
+            station.printStation();
+        }            
+    }
     
-                System.out.println("TOTAL_COLLECTION " + station.getStationName() + " " + totalCharges + " " + totalDiscount);
-                System.out.println("PASSENGER_TYPE_SUMMARY");
+    private static HashMap<Passenger, Integer> sortValues(Map<Passenger, Integer> passengerMap) {
+        List<Entry<Passenger, Integer>> list = new LinkedList<>(passengerMap.entrySet());  
     
-                Map<Passenger, Integer> passengerMap = station.getPassengerMap();
-                // = stationDTO.getPassengerMap();
-                //method to sort values  
-                HashMap<Passenger, Integer> passengerMapSorted = sortValues(passengerMap);
-      
-                for(Entry<Passenger, Integer> entry : passengerMapSorted.entrySet()){
-                    System.out.println(entry.getKey() + " " + entry.getValue());
+        //Custom Comparator  
+        list.sort(new Comparator()   
+        {  
+            @Override
+            public int compare(Object o1, Object o2) {
+                //ascending order
+                if(((Entry<Passenger, Integer>)o2).getValue() == (((Entry<Passenger,Integer>)o1).getValue())){
+                    return ((Entry<Passenger, Integer>)o1).getKey().compareTo(((Entry<Passenger,Integer>)o2).getKey());
                 }
+    
+                //descending order
+                return ((Entry<Passenger, Integer>)o2).getValue().compareTo(((Entry<Passenger,Integer>)o1).getValue());
             }
+        });
             
-            
+        //copying the sorted list in HashMap to preserve the iteration order  
+        HashMap<Passenger, Integer> sortedHashMap = new LinkedHashMap<>();  
+        for (Iterator<Entry<Passenger, Integer>> it = list.iterator(); it.hasNext();)   
+        {  
+            Entry<Passenger, Integer> entry = it.next();
+            sortedHashMap.put(entry.getKey(), entry.getValue());  
+        }   
+        return sortedHashMap;  
     }
-    
-    private static HashMap<Passenger, Integer> sortValues(Map<Passenger, Integer> passengerMap)   
-    {   
-            List<Entry<Passenger, Integer>> list = new LinkedList<>(passengerMap.entrySet());  
-    
-            //Custom Comparator  
-            list.sort(new Comparator()   
-            {  
-                @Override
-                public int compare(Object o1, Object o2) {
-                    //ascending order
-                    if(((Entry<Passenger, Integer>)o2).getValue() == (((Entry<Passenger,Integer>)o1).getValue())){
-                        return ((Entry<Passenger, Integer>)o1).getKey().compareTo(((Entry<Passenger,Integer>)o2).getKey());
-                    }
-    
-                    //descending order
-                    return ((Entry<Passenger, Integer>)o2).getValue().compareTo(((Entry<Passenger,Integer>)o1).getValue());
-                }
-            });
-            
-            //copying the sorted list in HashMap to preserve the iteration order  
-            HashMap<Passenger, Integer> sortedHashMap = new LinkedHashMap<>();  
-            for (Iterator<Entry<Passenger, Integer>> it = list.iterator(); it.hasNext();)   
-            {  
-                Entry<Passenger, Integer> entry = it.next();
-                sortedHashMap.put(entry.getKey(), entry.getValue());  
-            }   
-            return sortedHashMap;  
-    }
-
-
-
-
-
-
 
 }

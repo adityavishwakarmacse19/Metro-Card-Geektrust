@@ -1,4 +1,4 @@
-package com.geektrust.backend.Services;
+package com.geektrust.backend.services;
 
 import java.io.IOException;
 
