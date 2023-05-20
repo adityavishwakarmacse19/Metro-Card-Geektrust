@@ -2,11 +2,8 @@ package com.geektrust.backend.repositories;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import com.geektrust.backend.dto.StationCollection;
 import com.geektrust.backend.models.Station;
-import com.geektrust.backend.models.Station.StationName;
-import com.geektrust.backend.services.MetroServiceImpl.Passenger;;
+import com.geektrust.backend.constants.StationName;
 
 public class StationRepositoryImpl implements StationRepository {
     Map<StationName, Station> stationMap = new HashMap<>();

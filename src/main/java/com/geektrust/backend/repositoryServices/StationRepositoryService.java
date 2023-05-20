@@ -2,7 +2,7 @@ package com.geektrust.backend.repositoryServices;
 
 import com.geektrust.backend.dto.StationCollection;
 import com.geektrust.backend.models.Station;
-import com.geektrust.backend.models.Station.StationName;
+import com.geektrust.backend.constants.StationName;
 
 public interface StationRepositoryService {
     Station getByStationName(StationName stationName);

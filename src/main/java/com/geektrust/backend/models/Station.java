@@ -3,7 +3,8 @@ package com.geektrust.backend.models;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.geektrust.backend.services.MetroServiceImpl.Passenger;
+import com.geektrust.backend.constants.Passenger;
+import com.geektrust.backend.constants.StationName;
 
 public class Station {
     StationName stationName;   
@@ -58,9 +59,5 @@ public class Station {
 	public void setTotalCharges(int totalCharges) {
 		this.totalCharges = totalCharges;
 	}
-
-	public enum StationName{
-        CENTRAL, AIRPORT
-    }
 
 }

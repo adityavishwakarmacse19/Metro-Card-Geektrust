@@ -2,23 +2,14 @@ package com.geektrust.backend.repositories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import com.geektrust.backend.models.Card;
 import com.geektrust.backend.models.Station;
-import com.geektrust.backend.models.Station.StationName;
-import com.geektrust.backend.repositories.StationRepository;
-import com.geektrust.backend.repositories.StationRepositoryImpl;
-import com.geektrust.backend.services.MetroServiceImpl.Passenger;
+import com.geektrust.backend.constants.StationName;
+import com.geektrust.backend.constants.Passenger;
 
 public class StationRepositoryTest {
 

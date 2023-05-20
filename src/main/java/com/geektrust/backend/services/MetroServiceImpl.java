@@ -10,38 +10,25 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.geektrust.backend.constants.Common;
+import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.dto.StationCollection;
-import com.geektrust.backend.models.Card;
+import com.geektrust.backend.models.MetroCard;
 import com.geektrust.backend.models.Station;
-import com.geektrust.backend.models.Station.StationName;
+import com.geektrust.backend.constants.StationName;
 import com.geektrust.backend.repositories.CardRepository;
 import com.geektrust.backend.repositories.CardRepositoryImpl;
-import com.geektrust.backend.repositories.StationRepository;
-import com.geektrust.backend.repositories.StationRepositoryImpl;
 import com.geektrust.backend.repositoryServices.StationRepositoryService;
 import com.geektrust.backend.repositoryServices.StationRepositoryServiceImpl;
 
 public class MetroServiceImpl implements MetroService{
-    public enum Passenger{
-        ADULT(200), KID(50), SENIOR_CITIZEN(100);
 
-        private int cost;
-
-        public int getCost(){
-            return this.cost;
-        }
-
-        private Passenger(int cost){
-            this.cost = cost;
-        }
-    }
 
     CardRepository cardRepository = new CardRepositoryImpl();
     StationRepositoryService stationRepositoryService = new StationRepositoryServiceImpl();
 
     @Override
     public void balance(String cardNumber, int balance){
-        Card card = new Card(cardNumber, balance);
+        MetroCard card = new MetroCard(cardNumber, balance);
         cardRepository.save(card);
     }  
 
@@ -50,7 +37,7 @@ public class MetroServiceImpl implements MetroService{
 
         if(cardRepository.containsCardNumber(cardNumber)){
 
-            Card card = cardRepository.getByCardNumber(cardNumber);
+            MetroCard card = cardRepository.getByCardNumber(cardNumber);
             //calculate cost
             int cost = Passenger.valueOf(passenger).getCost();
 

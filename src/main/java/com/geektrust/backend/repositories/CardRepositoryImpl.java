@@ -3,18 +3,18 @@ package com.geektrust.backend.repositories;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.geektrust.backend.models.Card;
+import com.geektrust.backend.models.MetroCard;
 
 public class CardRepositoryImpl implements CardRepository{
-    Map<String, Card> CardMap = new HashMap<>();
+    Map<String, MetroCard> CardMap = new HashMap<>();
 
     @Override
-    public void save(Card card) {
+    public void save(MetroCard card) {
         CardMap.put(card.getCardNumber(),card);
     }
 
     @Override
-    public void delete(Card card) {
+    public void delete(MetroCard card) {
         CardMap.remove(card.getCardNumber());
     }
 
@@ -24,7 +24,7 @@ public class CardRepositoryImpl implements CardRepository{
     }
 
     @Override
-    public Card getByCardNumber(String cardNumber) {
+    public MetroCard getByCardNumber(String cardNumber) {
         return CardMap.get(cardNumber);
     }
 

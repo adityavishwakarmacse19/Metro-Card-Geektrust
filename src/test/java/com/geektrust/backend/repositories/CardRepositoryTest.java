@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.geektrust.backend.models.Card;
+import com.geektrust.backend.models.MetroCard;
 import com.geektrust.backend.repositories.CardRepository;
 import com.geektrust.backend.repositories.CardRepositoryImpl;
 
@@ -16,11 +16,11 @@ import com.geektrust.backend.repositories.CardRepositoryImpl;
 class CardRepositoryTest {
 
     CardRepository cardRepository;
-    Card card;
+    MetroCard card;
     @BeforeEach                                         
     void setUp() {
         cardRepository = new CardRepositoryImpl();
-        card = new Card("AB1", 100);
+        card = new MetroCard("AB1", 100);
         cardRepository.save(card);
     }
 

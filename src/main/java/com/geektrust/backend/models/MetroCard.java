@@ -1,16 +1,16 @@
 package com.geektrust.backend.models;
 
-import com.geektrust.backend.models.Station.StationName;
+import com.geektrust.backend.constants.StationName;
 
-public class Card {
+public class MetroCard {
     String cardNumber;
-
+    int balance;
 
 	StationName fromStation;
-    int balance;
+    
     boolean returnJourney; 
 
-    public Card(String metroNumber, int balance) {
+    public MetroCard(String metroNumber, int balance) {
         this.cardNumber = metroNumber;
         this.balance = balance;
     }

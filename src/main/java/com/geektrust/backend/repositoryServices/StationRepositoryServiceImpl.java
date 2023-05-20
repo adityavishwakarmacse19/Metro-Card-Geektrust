@@ -1,11 +1,11 @@
 package com.geektrust.backend.repositoryServices;
 
+import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.dto.StationCollection;
 import com.geektrust.backend.models.Station;
-import com.geektrust.backend.models.Station.StationName;
+import com.geektrust.backend.constants.StationName;
 import com.geektrust.backend.repositories.StationRepository;
 import com.geektrust.backend.repositories.StationRepositoryImpl;
-import com.geektrust.backend.services.MetroServiceImpl.Passenger;
 
 import java.util.HashMap;
 import java.util.Map;

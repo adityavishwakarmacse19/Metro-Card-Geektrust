@@ -1,10 +1,10 @@
 package com.geektrust.backend.repositories;
 
-import com.geektrust.backend.models.Card;
+import com.geektrust.backend.models.MetroCard;
 
 public interface CardRepository {
-    Card getByCardNumber(String cardNumber);
+    void save(MetroCard card);
+    MetroCard getByCardNumber(String cardNumber);
     boolean containsCardNumber(String cardNumber);
-    void save(Card card);
-    void delete(Card card);
+    void delete(MetroCard card);
 }
