@@ -9,8 +9,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import com.geektrust.backend.models.MetroCard;
-import com.geektrust.backend.repositories.CardRepository;
-import com.geektrust.backend.repositories.CardRepositoryImpl;
 
 @DisplayName("App Test")
 class CardRepositoryTest {

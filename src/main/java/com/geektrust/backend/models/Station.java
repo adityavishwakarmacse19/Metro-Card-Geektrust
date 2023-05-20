@@ -7,10 +7,10 @@ import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
 
 public class Station {
-    StationName stationName;   
-    int totalDiscount;
-    int totalCharges;
-    Map<Passenger, Integer> passengerMap;
+    private StationName stationName;   
+    private int totalDiscount;
+    private int totalCharges;
+    private Map<Passenger, Integer> passengerMap;
 	
 
 	public Station(StationName stationName, int totalDiscount, int totalCharges, Map<Passenger, Integer> passengerMap) {

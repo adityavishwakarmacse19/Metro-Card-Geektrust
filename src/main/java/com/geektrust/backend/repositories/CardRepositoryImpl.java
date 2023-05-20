@@ -6,7 +6,7 @@ import java.util.Map;
 import com.geektrust.backend.models.MetroCard;
 
 public class CardRepositoryImpl implements CardRepository{
-    Map<String, MetroCard> CardMap = new HashMap<>();
+    private Map<String, MetroCard> CardMap = new HashMap<>();
 
     @Override
     public void save(MetroCard card) {
