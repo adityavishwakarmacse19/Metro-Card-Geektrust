@@ -16,6 +16,12 @@ public class Journey {
         this.fromStation = fromStation;
         this.isReturnJourney = false;
     }
+    // whether journey is a retrun journey or not
+    public void calculateIsReturnJourney(Journey previousJourney){
+        if(previousJourney != null){
+            isReturnJourney = previousJourney.getFromStation() != null && previousJourney.getFromStation() != fromStation && !previousJourney.isReturnJourney();
+        }
+    }
 
     public int calcuLateDiscount(){
         // int discount = Common.ZERO;
@@ -24,7 +30,6 @@ public class Journey {
         //     // journey is return journey
         //     // setting current isReturnJourney
         //     boolean isReturnJourney = !previousIsReturnjourney;
-        this.isReturnJourney = true;
 
             // if(isReturnJourney){
                 // discount = passenger.getFair()/Common.TWO;
@@ -35,7 +40,9 @@ public class Journey {
         //     this.isReturnJourney = false;
         //     discount = Common.ZERO;
         // }
+        if(isReturnJourney)
         return passenger.getFair()/Common.TWO;
+        else return Common.ZERO;
     }
 
     

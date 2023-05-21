@@ -8,6 +8,6 @@ public interface CardService {
     
     // use from parmaters card and return amount left to pay 
     int useCard(String cardNumber, int cost);
-
-    MetroCard getCardByCardNumber(String cardNumber);
+    
+    boolean containsCard(String cardNumber);
 }

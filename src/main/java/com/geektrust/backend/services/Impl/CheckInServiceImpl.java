@@ -5,7 +5,6 @@ import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
 import com.geektrust.backend.dto.StationCollection;
 import com.geektrust.backend.models.Journey;
-import com.geektrust.backend.models.MetroCard;
 import com.geektrust.backend.models.Station;
 import com.geektrust.backend.repositories.JourneyRepository;
 import com.geektrust.backend.repositories.StationRepository;
@@ -32,30 +31,21 @@ public class CheckInServiceImpl implements CheckInService{
         Passenger passenger = journey.getPassenger();
         StationName fromStation = journey.getFromStation();
 
-        MetroCard card = metroCardService.getCardByCardNumber(cardNumber);
-        if(card != null){
-            Journey previousJourney = journeyRepository.getByCardNumber(cardNumber);
+        //calculating discount
+        int discount = Common.ZERO;
+        journey.calculateIsReturnJourney(journeyRepository.getByCardNumber(cardNumber));
+        discount = journey.calcuLateDiscount();
 
-            //calculating discount
-            int discount = Common.ZERO;
-            // whether journey is a retrun journey or not
-            boolean isReturnJourney = previousJourney != null && previousJourney.getFromStation() != null && previousJourney.getFromStation() != fromStation && !previousJourney.isReturnJourney() ;
-            if(isReturnJourney){
-                discount = journey.calcuLateDiscount();
-            }
+        //calculate cost
+        int cost = passenger.getFair() - discount;
+        int remaingCost = metroCardService.useCard(cardNumber, cost);
+        cost += remaingCost * Common.SURCHARGE;
 
-            //calculate cost
-            int cost = passenger.getFair() - discount;
-            int remaingCost = metroCardService.useCard(cardNumber, cost);
-            cost += remaingCost * Common.SURCHARGE;
+        //save the current journey
+        journeyRepository.save(journey);
 
-            //save the current journey
-            journeyRepository.save(journey);
-
-            //add the current collection to  stationRepository
-            StationCollection stationCollection = new StationCollection(fromStation, discount, cost, passenger);
-            stationRepository.addCollection(stationCollection);
-        }
+        //add the current collection to  stationRepository
+        stationRepository.addCollection(new StationCollection(fromStation, discount, cost, passenger));
     }
 
     @Override

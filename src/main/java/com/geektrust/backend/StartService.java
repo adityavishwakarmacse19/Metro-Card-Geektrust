@@ -17,8 +17,8 @@ import com.geektrust.backend.services.Impl.PrintSummaryServiceImpl;
 public class StartService{
 
     public void start(String[] args) throws IOException {
-        CardService metroService = new MetroCardServiceImpl();
-        CheckInService checkInService = new CheckInServiceImpl(metroService);
+        CardService metroCardService = new MetroCardServiceImpl();
+        CheckInService checkInService = new CheckInServiceImpl(metroCardService);
         PrintSummaryService printSummaryService = new PrintSummaryServiceImpl(checkInService);
 
         // code to read from file passed as command line argument
@@ -37,7 +37,7 @@ public class StartService{
                     String[] cardParameters = input[1].split(Common.SPACE, Common.TWO);
                     //cardNumber - cardParameters[0]
                     //balance - Integer.parseInt(cardParameters[1])
-                    metroService.balance(cardParameters[0], Integer.parseInt(cardParameters[1]));
+                    metroCardService.balance(cardParameters[0], Integer.parseInt(cardParameters[1]));
                     break;
 
                 case "CHECK_IN":
@@ -45,6 +45,7 @@ public class StartService{
                     //cardNumber - journeyParameters[0]
                     //passenger - Passenger.valueOf(journeyParameters[1])
                     //fromstation - StationName.valueOf(journeyParameters[2])
+                    // if(metroCardService.containsCard(journeyParameters[0]))
                     checkInService.checkInPassenger(new Journey(journeyParameters[0], Passenger.valueOf(journeyParameters[1]), StationName.valueOf(journeyParameters[2])));
                     break;
                 

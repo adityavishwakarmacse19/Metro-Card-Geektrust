@@ -28,6 +28,4 @@ public class CardRepositoryImpl implements CardRepository{
     public MetroCard getByCardNumber(String cardNumber) {
         return CardMap.get(cardNumber);
     }
-
-    
 }

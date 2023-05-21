@@ -35,8 +35,8 @@ public class MetroCardServiceImpl implements CardService{
     }
 
     @Override
-    public MetroCard getCardByCardNumber(String cardNumber){
-        return cardRepository.getByCardNumber(cardNumber);
+    public boolean containsCard(String cardNumber) {
+        return cardRepository.containsCardNumber(cardNumber);
     }
 
 }
