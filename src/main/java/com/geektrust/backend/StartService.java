@@ -9,10 +9,10 @@ import com.geektrust.backend.constants.StationName;
 import com.geektrust.backend.models.CheckIn;
 import com.geektrust.backend.services.CardService;
 import com.geektrust.backend.services.CheckInService;
-import com.geektrust.backend.services.CheckInServiceImpl;
-import com.geektrust.backend.services.MetroCardServiceImpl;
 import com.geektrust.backend.services.PrintSummaryService;
-import com.geektrust.backend.services.PrintSummaryServiceImpl;
+import com.geektrust.backend.services.Impl.CheckInServiceImpl;
+import com.geektrust.backend.services.Impl.MetroCardServiceImpl;
+import com.geektrust.backend.services.Impl.PrintSummaryServiceImpl;
 
 public class StartService{
 

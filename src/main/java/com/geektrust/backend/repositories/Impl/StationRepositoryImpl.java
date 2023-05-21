@@ -1,8 +1,9 @@
-package com.geektrust.backend.repositories;
+package com.geektrust.backend.repositories.Impl;
 
 import java.util.HashMap;
 import java.util.Map;
 import com.geektrust.backend.models.Station;
+import com.geektrust.backend.repositories.StationRepository;
 import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
 import com.geektrust.backend.dto.StationCollection;

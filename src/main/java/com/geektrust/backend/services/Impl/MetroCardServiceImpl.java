@@ -1,9 +1,10 @@
-package com.geektrust.backend.services;
+package com.geektrust.backend.services.Impl;
 
 import com.geektrust.backend.constants.Common;
 import com.geektrust.backend.models.MetroCard;
 import com.geektrust.backend.repositories.CardRepository;
-import com.geektrust.backend.repositories.CardRepositoryImpl;
+import com.geektrust.backend.repositories.Impl.CardRepositoryImpl;
+import com.geektrust.backend.services.CardService;
 
 public class MetroCardServiceImpl implements CardService{
 

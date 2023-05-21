@@ -1,4 +1,4 @@
-package com.geektrust.backend.services;
+package com.geektrust.backend.services.Impl;
 
 import java.util.Comparator;
 import java.util.HashMap;
@@ -12,6 +12,8 @@ import java.util.Map.Entry;
 import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
 import com.geektrust.backend.models.Station;
+import com.geektrust.backend.services.CheckInService;
+import com.geektrust.backend.services.PrintSummaryService;
 
 public class PrintSummaryServiceImpl implements PrintSummaryService{
 

@@ -1,9 +1,10 @@
-package com.geektrust.backend.repositories;
+package com.geektrust.backend.repositories.Impl;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.geektrust.backend.models.MetroCard;
+import com.geektrust.backend.repositories.CardRepository;
 
 public class CardRepositoryImpl implements CardRepository{
     private Map<String, MetroCard> CardMap = new HashMap<>();

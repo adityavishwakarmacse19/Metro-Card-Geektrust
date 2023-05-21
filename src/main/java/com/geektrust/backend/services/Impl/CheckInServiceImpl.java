@@ -1,4 +1,4 @@
-package com.geektrust.backend.services;
+package com.geektrust.backend.services.Impl;
 
 import com.geektrust.backend.constants.Common;
 import com.geektrust.backend.constants.Passenger;
@@ -8,9 +8,11 @@ import com.geektrust.backend.models.CheckIn;
 import com.geektrust.backend.models.MetroCard;
 import com.geektrust.backend.models.Station;
 import com.geektrust.backend.repositories.CheckInRepository;
-import com.geektrust.backend.repositories.CheckInRepositoryImpl;
 import com.geektrust.backend.repositories.StationRepository;
-import com.geektrust.backend.repositories.StationRepositoryImpl;
+import com.geektrust.backend.repositories.Impl.CheckInRepositoryImpl;
+import com.geektrust.backend.repositories.Impl.StationRepositoryImpl;
+import com.geektrust.backend.services.CardService;
+import com.geektrust.backend.services.CheckInService;
 
 
 public class CheckInServiceImpl implements CheckInService{

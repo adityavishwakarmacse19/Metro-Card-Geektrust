@@ -1,9 +1,10 @@
-package com.geektrust.backend.repositories;
+package com.geektrust.backend.repositories.Impl;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import com.geektrust.backend.models.CheckIn;
+import com.geektrust.backend.repositories.CheckInRepository;
 
 public class CheckInRepositoryImpl implements CheckInRepository{
     private Map<String, CheckIn> checkInMap = new HashMap<>();

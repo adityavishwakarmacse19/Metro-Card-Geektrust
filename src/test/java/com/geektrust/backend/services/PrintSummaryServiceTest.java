@@ -8,6 +8,9 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
 import com.geektrust.backend.models.CheckIn;
+import com.geektrust.backend.services.Impl.CheckInServiceImpl;
+import com.geektrust.backend.services.Impl.MetroCardServiceImpl;
+import com.geektrust.backend.services.Impl.PrintSummaryServiceImpl;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class PrintSummaryServiceTest {
