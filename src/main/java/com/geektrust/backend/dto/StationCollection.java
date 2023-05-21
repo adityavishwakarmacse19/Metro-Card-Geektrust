@@ -3,6 +3,8 @@ package com.geektrust.backend.dto;
 import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
 
+
+//TODO: change name
 public class StationCollection {
     private StationName stationName;
 	private int discount;

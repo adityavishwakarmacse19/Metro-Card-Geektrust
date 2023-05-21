@@ -21,8 +21,8 @@ import com.geektrust.backend.services.Impl.MetroCardServiceImpl;
 @TestInstance(Lifecycle.PER_CLASS)
 public class CheckInServiceTest {
 
-    private final static CardService metroCardService = new MetroCardServiceImpl();
-    private final CheckInService checkInService = new CheckInServiceImpl(metroCardService);
+    private static final CardService metroCardService = new MetroCardServiceImpl();
+    private static final CheckInService checkInService = new CheckInServiceImpl(metroCardService);
 
     @BeforeAll
     public void setup() {
