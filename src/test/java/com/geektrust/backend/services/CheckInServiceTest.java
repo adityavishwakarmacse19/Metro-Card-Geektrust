@@ -14,7 +14,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
-import com.geektrust.backend.models.CheckIn;
+import com.geektrust.backend.models.Journey;
 import com.geektrust.backend.services.Impl.CheckInServiceImpl;
 import com.geektrust.backend.services.Impl.MetroCardServiceImpl;
 
@@ -34,16 +34,16 @@ public class CheckInServiceTest {
     @Order(1)
     @Test
     public void testAdultCheckIn() {
-        CheckIn checkIn = new CheckIn("MC3", Passenger.ADULT, StationName.CENTRAL);
-        checkInService.checkInPassenger(checkIn);
+        Journey journey = new Journey("MC3", Passenger.ADULT, StationName.CENTRAL);
+        checkInService.checkInPassenger(journey);
         assertNotEquals(0, checkInService.getStationByStationName(StationName.CENTRAL));
     }
 
     @Order(2)
     @Test
     public void testSeniorCheckIn() {
-        CheckIn checkIn = new CheckIn("MC2", Passenger.SENIOR_CITIZEN, StationName.CENTRAL);
-        checkInService.checkInPassenger(checkIn);
+        Journey journey = new Journey("MC2", Passenger.SENIOR_CITIZEN, StationName.CENTRAL);
+        checkInService.checkInPassenger(journey);
 
         assertNotEquals(0, checkInService.getStationByStationName(StationName.CENTRAL));
     }
@@ -51,8 +51,8 @@ public class CheckInServiceTest {
     @Order(3)
     @Test
     public void testKidCheckIn() {
-        CheckIn checkIn = new CheckIn("MC1", Passenger.KID, StationName.CENTRAL);
-        checkInService.checkInPassenger(checkIn);
+        Journey journey = new Journey("MC1", Passenger.KID, StationName.CENTRAL);
+        checkInService.checkInPassenger(journey);
 
         assertNotNull(checkInService.getStationByStationName(StationName.CENTRAL));
     }
@@ -60,8 +60,8 @@ public class CheckInServiceTest {
     @Order(4)
     @Test
     public void testAdultCheckInReturn() {
-        CheckIn checkIn = new CheckIn("MC3", Passenger.ADULT, StationName.CENTRAL);
-        checkInService.checkInPassenger(checkIn);
+        Journey journey = new Journey("MC3", Passenger.ADULT, StationName.CENTRAL);
+        checkInService.checkInPassenger(journey);
         assertNotNull(checkInService.isCheckedIn("MC3"));
         assertNotNull(checkInService.getStationByStationName(StationName.CENTRAL));
     }
@@ -69,12 +69,12 @@ public class CheckInServiceTest {
     @Order(5)
     @Test
     public void testAdultCheckInReturnAgain() {
-        CheckIn checkIn = new CheckIn("MC3", Passenger.ADULT, StationName.CENTRAL);
-        checkInService.checkInPassenger(checkIn);
-        CheckIn checkInReturn = new CheckIn("MC3", Passenger.ADULT, StationName.AIRPORT);
-        checkInService.checkInPassenger(checkInReturn);
+        Journey journey = new Journey("MC3", Passenger.ADULT, StationName.CENTRAL);
+        checkInService.checkInPassenger(journey);
+        Journey journeyReturn = new Journey("MC3", Passenger.ADULT, StationName.AIRPORT);
+        checkInService.checkInPassenger(journeyReturn);
 
-        assertTrue(checkInReturn.isReturnJourney());
+        assertTrue(journeyReturn.isReturnJourney());
         assertNotNull(checkInService.getStationByStationName(StationName.CENTRAL));
     }
 }

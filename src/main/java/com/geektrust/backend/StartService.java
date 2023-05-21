@@ -6,7 +6,7 @@ import java.util.Scanner;
 import com.geektrust.backend.constants.Common;
 import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
-import com.geektrust.backend.models.CheckIn;
+import com.geektrust.backend.models.Journey;
 import com.geektrust.backend.services.CardService;
 import com.geektrust.backend.services.CheckInService;
 import com.geektrust.backend.services.PrintSummaryService;
@@ -41,11 +41,11 @@ public class StartService{
                     break;
 
                 case "CHECK_IN":
-                    String[] checkInParameters = input[1].split(Common.SPACE, Common.THREE);
-                    //cardNumber - checkInParameters[0]
-                    //passenger - Passenger.valueOf(checkInParameters[1])
-                    //fromstation - StationName.valueOf(checkInParameters[2])
-                    checkInService.checkInPassenger(new CheckIn(checkInParameters[0], Passenger.valueOf(checkInParameters[1]), StationName.valueOf(checkInParameters[2])));
+                    String[] journeyParameters = input[1].split(Common.SPACE, Common.THREE);
+                    //cardNumber - journeyParameters[0]
+                    //passenger - Passenger.valueOf(journeyParameters[1])
+                    //fromstation - StationName.valueOf(journeyParameters[2])
+                    checkInService.checkInPassenger(new Journey(journeyParameters[0], Passenger.valueOf(journeyParameters[1]), StationName.valueOf(journeyParameters[2])));
                     break;
                 
                 case "PRINT_SUMMARY":

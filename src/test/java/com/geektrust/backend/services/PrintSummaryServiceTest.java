@@ -7,7 +7,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import com.geektrust.backend.constants.Passenger;
 import com.geektrust.backend.constants.StationName;
-import com.geektrust.backend.models.CheckIn;
+import com.geektrust.backend.models.Journey;
 import com.geektrust.backend.services.Impl.CheckInServiceImpl;
 import com.geektrust.backend.services.Impl.MetroCardServiceImpl;
 import com.geektrust.backend.services.Impl.PrintSummaryServiceImpl;
@@ -23,7 +23,7 @@ public class PrintSummaryServiceTest {
         metroCardService.balance("MC1", 101);
         metroCardService.balance("MC2", 501);
         metroCardService.balance("MC3", 1001);
-        checkInService.checkInPassenger(new CheckIn("MC3", Passenger.ADULT, StationName.CENTRAL));
+        checkInService.checkInPassenger(new Journey("MC3", Passenger.ADULT, StationName.CENTRAL));
     }
 
     @Test
